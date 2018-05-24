@@ -1,0 +1,69 @@
+
+Authors:
+
+Amol Singbal - asingbal3@gatech.edu
+Anush Ananthakumar - anushkumar@gatech.edu
+Arindam Duttagupta - aduttagupta3@gatech.edu
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+This is the instruction file for CHest Xray Disease Diagnosis
+
+All the codes(preprocessing,CNN and Faster RCNN) are present in /code folder. The Dataset used is a 5% random sample from the NIH Chest X Ray Dataset 
+and is not included as it is publicly available. The Report and the presentation are included in the current folder
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Code folder consists of the following: the src and the data folder
+
+
+Run the codes of code/src folder in the following order
+
+1) preprocessing.py - This script includes the preprocessing script written in Python and implemented using pyspark, which is the SPARK library for python
+It downsamples the images to (256,256) and readies them for further training
+2) resize_images.py - Processes the images as required by the neural network for training. It is written in Python and implemented using pyspark
+3) image_to_array.py  - Converts each image to an array and saves it
+4) model.py - Reads the data from the .csv files
+5) reconcile_labels.py - Dropping unnecessary labels such as PixelLabelSpacing etc, and keeping only the required labels in the pandas DataFrame
+6) cnn_keras.py - Trains a Convolutional Neural Network which classifies an input X ray into one of the 15 classes
+
+Just in case if anaconda or python throws an error stating ModuleNotFound: You can solve it by running
+
+conda install package-name
+or 
+pip3 install package-name
+
+
+Then run the codes in code/data folder
+
+1) FasterRCNN_Chest_Xray.m - A MATLAB Code implementing Faster RCNN. Requires Neural Network Toolbox. Note the input to the network. 
+	a) First column must be the filepaths from where the images have to be read. This depends on where the user has stored the images
+	b) The Second column has the bounding boxes which can be extracted from the given BBox_List_2017.csv
+	c) The resulting table has to be stored as Chest_BBox.mat
+
+
+Also Note:
+Data_Entry_2017.csv basically gives data pertaining to the patient demographics such as age, gender etc
+BBox_List_2017.csv - Gives the positions of the bounding boxes which are used to train the Faster RCNN
+sample_labels.csv - Gives a list of the labels associated with every image in the training set. Note that one image CAN correspond to multiple classes of diseases
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Dataset Link: Both the ssmple data and the labels can be found here 
+
+https://www.kaggle.com/nih-chest-xrays/sample/data
+
+The Dataset is NOT Included in the zip file
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Youtube Link 
+
+https://youtu.be/tPka_wppwUE
+
+
+
+
